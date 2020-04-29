@@ -91,20 +91,13 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
         Route::post('/multcancelaentrega', 'EncomendaController@cancelaMultiplasEntregas')->name('encomendas.cancela.multiplas.entregas');
 
 
-        /* Rotas Resources
+        //Rotas Resources
         Route::resource('users', 'UsuarioController')->middleware('permission:usuario-listar');
         Route::resource('produtos', 'ProdutoController')->middleware('permission:produtos-listar');
         Route::resource('permissions', 'PermissionController')->middleware('permission:permissao-listar');
         Route::resource('roles', 'RoleController')->middleware('permission:grupos-listar');
         Route::resource('encomendas', 'EncomendaController')->middleware('permission:encomendas-listar-pendentes');
         Route::resource('caracteristicas', 'CaracteristicaController')->middleware('permission:caracteristica-listar');
-       */
 
-        Route::resource('users', 'UsuarioController')->middleware('permission:usuario-listar');
-        Route::resource('produtos', 'ProdutoController')->middleware('permission:produtos-listar');
-        Route::resource('permissions', 'PermissionController')->middleware('permission:permissao-listar');
-        Route::resource('roles', 'RoleController')->middleware('permission:grupos-listar');
-        Route::resource('encomendas', 'EncomendaController')->middleware('permission:encomendas-listar-pendentes');
-        Route::resource('caracteristicas', 'CaracteristicaController')->middleware('permission:caracteristica-listar');
 
 });
