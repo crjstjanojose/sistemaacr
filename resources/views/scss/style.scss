@@ -1,0 +1,24 @@
+$theme-colors: ("rcprimary": #002346,
+    "rcwarning": #e67300,
+    "rcdanger": #b30000,
+    "rcsuccess": #29a3a3,
+    "rcsecondary": #2d5986,
+    "rcpurple": #7575a3,
+    "rccyan": #6b6a6a,
+    "rcred": #8b0000,
+    "rcgreen": #2f4f4f,
+    "rcblue": #56cee4,
+
+    "rcbtnprimary": #002346,
+    "rcbtnsecondary": #2d5986,
+    "rcbtnpurple": #7575a3,
+    "rcbtnviolet": #CD3278,
+    "rcbtnedit": rgb(235, 179, 37),
+    "rcbtnorange": #f7af52,
+    "rcbtncyan": #6E7B8B,
+    "rcbtnremove": rgb(207, 69, 69),
+    "rcbtnred": #8a0505,
+    "rcbtnadd": rgb(91, 175, 175));
+
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";

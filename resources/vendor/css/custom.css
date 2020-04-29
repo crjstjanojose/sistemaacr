@@ -1,0 +1,86 @@
+/*body, html {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to left bottom, #293e5e, #005a7d, #007890, #009593, #12b087);
+}
+*/
+.card-header {
+    padding-top: .1rem;
+    padding-bottom: .1rem;
+    background-color: #fafafa;
+    color: #212529;
+    box-shadow: 2px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+}
+
+.table-sm td,
+.table-sm th {
+    padding: .1rem;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.table.dataTable.table-sm>thead>tr>th {
+    padding: .5rem;
+    background: #002346;
+    color: #fff;
+    text-align: center;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #279292;
+    border-color: #279292;
+    padding: .8rem;
+}
+
+.page-link {
+    padding: .8rem .8rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #279292;
+    background-color: #fafafa;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    color: #279292;
+}
+
+.card-body {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+
+.bg-dark {
+    background: #0d908a;
+}
+
+tbody>tr>td:hover {
+    background-color: rgb(199, 231, 233);
+}
+
+.dropdown-menu {
+
+    background-color:  #002346;
+}
+
+
+.dropdown-item {
+    background-color: #002346;
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    color: #fff;
+    background: #0491b4;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.2em;
+    white-space: nowrap;
+}
+
+
