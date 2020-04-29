@@ -36,6 +36,20 @@
             </li>
             @endcan
 
+            @can('caracteristica-listar')
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Tabelas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @can('caracteristica-listar')
+                    <a class="dropdown-item" href="{{ route('caracteristicas.index') }}">Caracteristica</a>
+                    @endcan
+                </div>
+            </li>
+            @endcan
+
             @can('controle-acesso-configuracoes')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -56,23 +70,7 @@
                 </div>
             </li>
             @endcan
-
-            @can('caracteristica-listar')
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Tabelas
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    @can('caracteristica-listar')
-                    <a class="dropdown-item" href="{{ route('caracteristicas.index') }}">Caracteristica</a>
-                    @endcan
-                </div>
-            </li>
-            @endcan
-
         </ul>
-
 
         <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->

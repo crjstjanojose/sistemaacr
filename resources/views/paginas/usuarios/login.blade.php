@@ -19,12 +19,12 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <div class="form-group">
                     <label class="control-label">E-mail</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="email">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus name="email">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Senha</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required name="password">
                 </div>
 
                 <div id="remember" class="checkbox">

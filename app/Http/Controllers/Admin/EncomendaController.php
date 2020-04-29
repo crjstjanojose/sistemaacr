@@ -16,6 +16,27 @@ use App\Models\Produto;
 
 class EncomendaController extends Controller
 {
+
+    public function __construct()
+    {
+        //$this->middleware(['permission:'], ['only' => ['']]);
+        $this->middleware(['permission:encomendas-listar-pendentes'], ['only' => ['index','indexDatatablePendentes']]);
+        $this->middleware(['permission:encomendas-listar-solicitadas'], ['only' => ['indexSolicitadas','indexDatatablesSolicitadas']]);
+        $this->middleware(['permission:encomendas-listar-entregues'], ['only' => ['indexEntregues','indexDatatablesEntregues']]);
+
+        $this->middleware(['permission:encomendas-criar'], ['only' => ['create','store']]);
+        $this->middleware(['permission:encomendas-editar'], ['only' => ['edit','update']]);
+        $this->middleware(['permission:encomendas-excluir'], ['only' => ['destroy']]);
+
+        $this->middleware(['permission:encomendas-comprar'], ['only' => ['confirmaMultiplasCompras','confirmarCompraMulti']]);
+        $this->middleware(['permission:encomendas-cancelar-compra'], ['only' => ['cancelaMultiplasCompras','cancelarCompra']]);
+
+        $this->middleware(['permission:encomendas-entregar'], ['only' => ['multEntregar','confirmaEntrega']]);
+        $this->middleware(['permission:encomendas-cancelar-entrega'], ['only' => ['cancelaMultiplasEntregas','cancelaEntrega']]);
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
