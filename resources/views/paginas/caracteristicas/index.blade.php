@@ -105,7 +105,7 @@
                     success: function (data) {
                         $("#indexcaracteristicas")
                             .DataTable()
-                            .ajax.reload();                            
+                            .ajax.reload();
                         swal("Registro removido !", {
                             icon: "success"
                         });
