@@ -30,7 +30,7 @@
         <a href="{{ route("materiais.index") }}" class="btn btn-sm btn-rcsuccess">&nbsp; <i
                 class="fas fa-arrow-left"></i>
             &nbsp;Retornar</a>
-            @can('encomendas-criar')
+            @can('materiais-criar')
             <button type="submit" class="btn btn-sm btn-rcprimary mx-2">Incluir &nbsp; <i class="fas fa-database"></i>
                 &nbsp;
             </button>

@@ -89,7 +89,7 @@
     <div class="d-flex justify-content-end">
         <a href="{{ route('encomendas.index') }}" class="btn btn-sm btn-rcsuccess"> &nbsp;<i
                 class="fas fa-arrow-left"></i>&nbsp;Retornar</a>
-        @can('permissao-editar')
+        @can('encomendas-editar')
         <button type="submit" class="btn btn-sm btn-rcprimary mx-2">Atualizar&nbsp;<i
                 class="fas fa-database"></i>&nbsp;</button>
         @endcan

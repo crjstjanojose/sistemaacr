@@ -25,6 +25,11 @@ class MaterialController extends Controller
         return view('paginas.material.index');
     }
 
+    public function indexAtendidas()
+    {
+        return view('paginas.material.atendidas');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -56,7 +61,8 @@ class MaterialController extends Controller
             DB::commit();
 
             $parametros = new stdClass;
-            $parametros->email = "financeiro@farmaciasaocristovao.com.br";
+            //$parametros->email = "financeiro@farmaciasaocristovao.com.br";
+            $parametros->email = "cristiano@petrosnordeste.com.br";
             $parametros->name = 'Solicitação ACR';
             $parametros->solicitante =  strtoupper(Auth::user()->name);
             $parametros->titulo =  strtoupper($material->titulo);
@@ -114,7 +120,12 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $material = Material::find($id);
+        $material->user_cancela = Auth::user()->id;
+        $material->situacao = 'Cancelada';
+        $material->save();
+        if ($material)
+            $material->delete();
     }
 
     public function indexMateriais()
@@ -124,6 +135,26 @@ class MaterialController extends Controller
         ])
             ->join('users', 'users.id', '=', 'materiais.user_criacao')
             ->whereIn('materiais.situacao', ['Pendente'])
+            ->orderBy('materiais.id', 'desc');
+
+
+            return Datatables::of($materiais)
+            //->addColumn('btnedit', 'paginas.encomendas.solicitadas.actionedit')
+            ->addColumn('btndel', 'paginas.material.actiondel')
+            ->addColumn('checkbox', '<input type="checkbox" name="check-multiplo[]" class="check-multiplo" value="{{ $id }}" />')
+            ->rawColumns(['checkbox','btndel'])
+            ->toJson();
+    }
+
+
+
+    public function indexMateriaisSolicitadas()
+    {
+        $materiais = Material::select([
+            'materiais.id','materiais.descricao','users.name','materiais.created_at','materiais.titulo'
+        ])
+            ->join('users', 'users.id', '=', 'materiais.user_compra')
+            ->whereIn('materiais.situacao', ['Atendida'])
             ->orderBy('materiais.id', 'desc');
 
 
@@ -173,4 +204,74 @@ class MaterialController extends Controller
             }
         }
     }
+
+    public function cancelaMultiplasCompras(Request $request)
+    {
+        $materiais_ids = $request->input('id');
+        $materiais = Material::whereIn('id', $materiais_ids);
+
+        if ($materiais->count() > 0) {
+            foreach ($materiais_ids as $material) {
+                $this->cancelarCompra($material);
+            }
+        }
+    }
+
+    private function cancelarCompra($id)
+    {
+        $material = Material::find($id);
+        if ($material->situacao == 'Pendente') {
+            return redirect()->route('materiais.index')->with('toast_warning', 'Solicitaãoç já pendente !');
+        } else {
+
+            try {
+
+                DB::beginTransaction();
+                $material->situacao = 'Pendente';
+                $material->user_compra = null;
+                $material->save();
+
+                DB::commit();
+            } catch (exception $e) {
+                DB::rollback();
+            }
+        }
+    }
+
+
+
+    public function multEntregar(Request $request)
+    {
+        $materiais_ids = $request->input('id');
+        $materiais = Material::whereIn('id', $materiais_ids);
+
+        if ($materiais->count() > 0) {
+            foreach ($materiais_ids as $material) {
+                $this->confirmaEntrega($material);
+            }
+        }
+    }
+
+    private function confirmaEntrega($id)
+    {
+        $material = Material::find($id);
+        if ($material->situacao == 'Entregue') {
+            return redirect()->route('materiais.index')->with('toast_warning', 'Solicitação já entregue !');
+        } else {
+
+            try {
+
+                DB::beginTransaction();
+                $material->situacao = 'Entregue';
+                $material->user_entrega =  Auth::user()->id;
+                $material->save();
+
+                DB::commit();
+            } catch (exception $e) {
+                DB::rollback();
+            }
+        }
+    }
+
+
 }

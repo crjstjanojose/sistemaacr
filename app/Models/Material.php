@@ -4,12 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Material extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['descricao','user_criacao'];
 
     protected $table = 'materiais';
+
 
     //protected $casts = ['created_at' => 'datetime:d/m/Y H:m:s',];
 

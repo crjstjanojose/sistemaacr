@@ -8,17 +8,19 @@
 @section('ferramentas')
 <div class="col-md-6 d-flex justify-content-end my-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-        @can('materiais-criar')
-        <a href="{{ route('materiais.create') }}" class="btn btn-rcsecondary">Nova&nbsp;<i class="fas fa-plus"></i>
+        @can('materiais-cancelar-compradas')
+        <button class="btn btn-rcbtnorange text-white" id="btnCancelarCompra">
+            Cancelar Compra&nbsp;<i class="fas fa-undo"></i>
+        </button>
+        @endcan
+
+        @can('materiais-listar')
+        <a href="{{ route('materiais.index') }}" class="btn btn-rccyan">Pendentes&nbsp;<i class="fas fa-book"></i>
         </a>
         @endcan
-        @can('materiais-listar-compradas')
-        <a href="{{ route('index.atendidas') }}" class="btn btn-rccyan">Compradas &nbsp;<i class="fas fa-industry"></i>
-        </a>
-        @endcan
-        @can('materiais-comprar')
-        <button class="btn btn-rcsuccess" id="btnSolicitar">
-            Comprar&nbsp;<i class="fas fa-check"></i>
+        @can('materiais-entregar')
+        <button class="btn btn-rcbtnviolet" id="btnConfirmaEntrega">
+            Entregar&nbsp;<i class="fas fa-check"></i>
         </button>
         @endcan
     </div>
@@ -35,7 +37,6 @@
             <th>Título</th>
             <th>Descrição</th>
             <th>Solicitante</th>
-            <th></th>
             <th width="1%"><input type="checkbox" id="checkTodos" name="checkTodos"></th>
         </tr>
     </thead>
@@ -55,7 +56,7 @@
     $('#indexmateriais').DataTable({
         serverSide: false
         , processing: true
-        , "ajax": "{{ route('index.materiais') }}"
+        , "ajax": "{{ route('index.materiais.atendidas') }}"
         , "columns": [{
                 data: 'id'
             }
@@ -70,12 +71,6 @@
             }
             , {
                 data: 'name'
-            },
-            {
-                data: "btndel",
-                name: "btndel",
-                orderable: false,
-                searchable: false
             }
             , {
                 data: "checkbox",
@@ -129,7 +124,7 @@
     });
 
 
-    $(document).on('click', '#btnSolicitar', function () {
+    $(document).on('click', '#btnCancelarCompra', function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr("content");
         var id = [];
 
@@ -140,21 +135,21 @@
 
         if (id.length > 0) {
             swal({
-                text: "Confirma a solicitação da(s)compra(s) " + id.length  +  " selecionada(s) ?",
+                text: "Confirma o cancelamento da(s)compras(s) " + id.length  +  " selecionada(s) ?",
                 buttons: true,
                 dangerMode: true,
             })
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
-                            url: "{{ route('solicitacoes.confirma.multiplas') }}"
+                            url: "{{ route('solicitacao.cancela.multiplas.compras') }}"
                              , method: "POST"
                              , data: {id: id, _token: CSRF_TOKEN}
 
                              , success: function(data) {
 
                                 $('#indexmateriais').DataTable().ajax.reload();
-                                    swal("Compras confirmadas com sucesso !", {
+                                    swal("Compras canceladas com sucesso !", {
                                     icon: "success",
                                     });
                                  }
@@ -169,7 +164,7 @@
         } else {
             swal({
 
-                text: " Nenhuma encomenda foi selecionada !",
+                text: " Nenhuma compra foi selecionada !",
                 icon: "info",
                 button: "OK",
             });
@@ -177,39 +172,52 @@
     });
 
 
-    function deleteData(id) {
+    $(document).on('click', '#btnConfirmaEntrega', function () {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr("content");
-        swal({
-            title: "Confirma a exclusão ?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-        }).then(willDelete => {
-            if (willDelete) {
-                $.ajax({
-                    url: "materiais/" + id,
-                    type: "POST",
-                    data: { _method: "DELETE", _token: CSRF_TOKEN },
-                    success: function (data) {
-                        $("#indexmateriais")
-                            .DataTable()
-                            .ajax.reload();
-                        swal("Registro removido !", {
-                            icon: "success"
+        var id = [];
+
+        $('.check-multiplo:checked').each(function () {
+            id.push($(this).val());
+        });
+
+
+        if (id.length > 0) {
+            swal({
+                text: "Confirma a entrega  da(s)compras(s) " + id.length  +  " selecionada(s) ?",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: "{{ route('solicitacao.multiplas.entregar') }}"
+                             , method: "POST"
+                             , data: {id: id, _token: CSRF_TOKEN}
+
+                             , success: function(data) {
+
+                                $('#indexmateriais').DataTable().ajax.reload();
+                                    swal("Entregas confirmadas com sucesso !", {
+                                    icon: "success",
+                                    });
+                                 }
                         });
-                    },
-                    error: function () {
-                        swal({
-                            title: "Ops ! Ocorreu um erro ao tentar excluir !",
-                            text: data.message,
-                            type: "error",
-                            timer: "1500"
-                        });
+
+                    } else {
+                        $('#indexmateriais').DataTable().ajax.reload();
+                        $('input:checkbox').prop("checked", false);
+                        swal("Operação cancelada !");
                     }
                 });
-            }
-        });
-    }
+        } else {
+            swal({
+
+                text: " Nenhuma compra foi selecionada !",
+                icon: "info",
+                button: "OK",
+            });
+        }
+    });
 
 
 </script>

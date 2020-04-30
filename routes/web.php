@@ -53,8 +53,11 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
         Route::get('indexentregues',"EncomendaController@indexEntregues")->name('encomendas.index.entregues');
         Route::get('encomendassindexentregues',"EncomendaController@indexDatatablesEntregues")->name('encomendas.entregues.table.index');
 
-
+        // SOLICITACAO MATERIAL
         Route::get('indexmateriais',"MaterialController@indexMateriais")->name('index.materiais');
+
+        Route::get('indexmateriaissolicitadas',"MaterialController@indexAtendidas")->name('index.atendidas');
+        Route::get('indexmateriaissolicitadastable',"MaterialController@indexMateriaisSolicitadas")->name('index.materiais.atendidas');
 
         // FIM ROTAS DOS DATABLES INDEX
 
@@ -95,10 +98,8 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
         Route::post('/multcancelacompra', 'EncomendaController@cancelaMultiplasCompras')->name('encomendas.cancela.multiplas.compras');
         Route::post('/multentregar', 'EncomendaController@multEntregar')->name('encomendas.multiplas.entregar');
         Route::post('/multcancelaentrega', 'EncomendaController@cancelaMultiplasEntregas')->name('encomendas.cancela.multiplas.entregas');
-
-
-
-
+        Route::post('/multconfirmaentregasolicitacao', 'MaterialController@multEntregar')->name('solicitacao.multiplas.entregar');
+        Route::post('/multcancelasolicitacao', 'MaterialController@cancelaMultiplasCompras')->name('solicitacao.cancela.multiplas.compras');
         Route::post('/multisolicitacao', 'MaterialController@confirmaMultiplasSolicitacoes')->name('solicitacoes.confirma.multiplas');
 
 
@@ -110,9 +111,7 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
         Route::resource('roles', 'RoleController')->middleware('permission:grupos-listar');
         Route::resource('encomendas', 'EncomendaController')->middleware('permission:encomendas-listar-pendentes');
         Route::resource('caracteristicas', 'CaracteristicaController')->middleware('permission:caracteristica-listar');
-
-
-        Route::resource('materiais','MaterialController');
+        Route::resource('materiais','MaterialController')->middleware('permission:materiais-listar');
 
 
 

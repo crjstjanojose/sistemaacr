@@ -36,6 +36,14 @@
             </li>
             @endcan
 
+            @can('materiais-listar')
+            <li class="nav-item">
+                <a class="nav-link @if(request()->is('admin/materiais')) active @endif"
+                    href="{{ route('materiais.index') }}">Entregues</a>
+            </li>
+            @endcan
+
+
             @can('caracteristica-listar')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -48,7 +56,6 @@
                     @endcan
 
 
-                    <a class="dropdown-item" href="{{ route('materiais.index') }}">Materiais</a>
 
 
                 </div>

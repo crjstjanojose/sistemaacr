@@ -21,7 +21,7 @@ class CreateMateriaisTable extends Migration
             $table->unsignedBigInteger('user_compra')->nullable();
             $table->unsignedBigInteger('user_cancela')->nullable();
             $table->unsignedBigInteger('user_entrega')->nullable();
-            $table->enum('situacao', ['Pendente', 'Atendida', 'Cancelada'])->default('Pendente');
+            $table->enum('situacao', ['Pendente', 'Atendida', 'Cancelada','Entregue'])->default('Pendente');
 
             $table->foreign('user_criacao', 'fk_user_criacao_mat')
                 ->references('id')
@@ -48,6 +48,7 @@ class CreateMateriaisTable extends Migration
                 ->onUpdate('restrict');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
