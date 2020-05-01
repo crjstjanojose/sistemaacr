@@ -39,7 +39,7 @@
             @can('materiais-listar')
             <li class="nav-item">
                 <a class="nav-link @if(request()->is('admin/materiais')) active @endif"
-                    href="{{ route('materiais.index') }}">Entregues</a>
+                    href="{{ route('materiais.index') }}">Materiais</a>
             </li>
             @endcan
 

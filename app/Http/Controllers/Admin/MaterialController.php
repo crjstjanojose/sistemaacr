@@ -61,8 +61,7 @@ class MaterialController extends Controller
             DB::commit();
 
             $parametros = new stdClass;
-            //$parametros->email = "financeiro@farmaciasaocristovao.com.br";
-            $parametros->email = "cristiano@petrosnordeste.com.br";
+            $parametros->email = "financeiro@farmaciasaocristovao.com.br";
             $parametros->name = 'Solicitação ACR';
             $parametros->solicitante =  strtoupper(Auth::user()->name);
             $parametros->titulo =  strtoupper($material->titulo);
