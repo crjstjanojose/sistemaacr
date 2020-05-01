@@ -54,10 +54,6 @@
                     @can('caracteristica-listar')
                     <a class="dropdown-item" href="{{ route('caracteristicas.index') }}">Caracteristica</a>
                     @endcan
-
-
-
-
                 </div>
             </li>
             @endcan

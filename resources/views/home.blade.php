@@ -46,5 +46,17 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Solicitar Material</h5>
+                        <a href="{{ route('materiais.create') }}" class="btn btn-sm btn-rcpurple d-block"> Solicitar Material </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
