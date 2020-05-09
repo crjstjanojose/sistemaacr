@@ -186,11 +186,13 @@ class EncomendaController extends Controller
 
         $encomendas = Encomenda::select([
             'encomendas.id', 'encomendas.nome', 'produtos.denominacao',
-            'encomendas.quantidade', 'encomendas.created_at', 'encomendas.previsao',
-            'encomendas.tipo_encomenda','users.name'
+            'encomendas.quantidade', 'encomendas.created_at',
+            'encomendas.tipo_encomenda','users.name',
+            'caracteristicas.denominacao as caracteristica'
         ])
             ->join('users', 'users.id', '=', 'encomendas.user_criacao')
             ->join('produtos', 'produtos.id', '=', 'encomendas.produto_id')
+            ->join('caracteristicas', 'caracteristicas.id', '=', 'encomendas.caracteristica_id')
             ->whereIn('situacao_pedido', ['Pendente'])
             ->orderBy('encomendas.id', 'desc');
 
@@ -209,11 +211,13 @@ class EncomendaController extends Controller
 
         $encomendas = Encomenda::select([
             'encomendas.id', 'encomendas.nome', 'produtos.denominacao',
-            'encomendas.quantidade', 'encomendas.created_at', 'encomendas.previsao',
-            'encomendas.tipo_encomenda','users.name'
+            'encomendas.quantidade', 'encomendas.created_at',
+            'encomendas.tipo_encomenda','users.name',
+            'caracteristicas.denominacao as caracteristica'
         ])
             ->join('users', 'users.id', '=', 'encomendas.user_criacao')
             ->join('produtos', 'produtos.id', '=', 'encomendas.produto_id')
+            ->join('caracteristicas', 'caracteristicas.id', '=', 'encomendas.caracteristica_id')
             ->whereIn('situacao_pedido', ['Solicitado'])
             ->orderBy('encomendas.id', 'desc');
 
@@ -236,6 +240,7 @@ class EncomendaController extends Controller
         ])
             ->join('users', 'users.id', '=', 'encomendas.user_criacao')
             ->join('produtos', 'produtos.id', '=', 'encomendas.produto_id')
+
             ->whereIn('situacao_pedido', ['Entregue'])
             ->orderBy('encomendas.id', 'desc');
 

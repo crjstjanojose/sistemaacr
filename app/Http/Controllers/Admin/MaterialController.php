@@ -60,6 +60,7 @@ class MaterialController extends Controller
 
             DB::commit();
 
+            /*
             $parametros = new stdClass;
             $parametros->email = "financeiro@farmaciasaocristovao.com.br";
             $parametros->name = 'Solicitação ACR';
@@ -68,7 +69,7 @@ class MaterialController extends Controller
             $parametros->descricao = strtoupper($material->descricao);
 
             Mail::send(new SolicitacaoMail($parametros));
-
+            */
 
             return redirect()->route('materiais.index')->with('toast_success', 'Solicitação cadastrado com sucesso !');
         } catch (exception $e) {

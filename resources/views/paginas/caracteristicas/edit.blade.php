@@ -1,8 +1,8 @@
 @extends('layoutacr.layoutacr')
 
-@section('titulo','Alterar Permissão')
+@section('titulo','Alterar Característica')
 
-@section('acao','Edição Permissão')
+@section('acao','Edição Característica')
 
 @section('conteudo')
 <form action="{{ route('caracteristicas.update',$caracteristica->id) }}" method="post">

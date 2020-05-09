@@ -35,7 +35,7 @@
             <th>Descrição</th>
             <th width="3%">Und</th>
             <th>Solicitação</th>
-            <th>Previsão</th>
+            <th>Característica</th>
             <th>Tipo</th>
             <th>Solicitante</th>
             <th width="3%"></th>
@@ -74,7 +74,7 @@
                 data: "created_at"
             },
             {
-                data: "previsao"
+                data: "caracteristica"
             },
             {
                 data: "tipo_encomenda"

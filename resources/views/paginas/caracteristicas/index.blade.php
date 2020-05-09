@@ -1,8 +1,8 @@
 @extends('layoutacr.layoutacr')
 
-@section('titulo','Lista de Permissões')
+@section('titulo','Lista de Características')
 
-@section('acao','Permissões')
+@section('acao','Características')
 
 
 @section('ferramentas')
