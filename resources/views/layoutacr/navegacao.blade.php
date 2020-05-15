@@ -54,6 +54,12 @@
                     @can('caracteristica-listar')
                     <a class="dropdown-item" href="{{ route('caracteristicas.index') }}">Caracteristica</a>
                     @endcan
+                    @can('clientes-listar')
+                    <a class="dropdown-item" href="{{ route('clientes.index') }}">Clientes</a>
+                    @endcan
+                    @can('aplicacoes-listar')
+                    <a class="dropdown-item" href="{{ route('aplicacoes.index') }}">Aplicações</a>
+                    @endcan
                 </div>
             </li>
             @endcan

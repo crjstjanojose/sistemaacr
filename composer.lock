@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3df23bdc564ef70e888daf971a70aa02",
+    "content-hash": "42a883e06c0135b45dfabf74b09d8926",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -335,6 +335,99 @@
             "time": "2020-02-22T01:51:47+00:00"
         },
         {
+            "name": "geekcom/validator-docs",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geekcom/validator-docs.git",
+                "reference": "74c7867f211fcd38fdb2cc8e3e028e8aeff42f87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geekcom/validator-docs/zipball/74c7867f211fcd38fdb2cc8e3e028e8aeff42f87",
+                "reference": "74c7867f211fcd38fdb2cc8e3e028e8aeff42f87",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpstan/phpstan": "^0.12.5",
+                "phpunit/phpunit": "^8.4",
+                "squizlabs/php_codesniffer": "*",
+                "symplify/changelog-linker": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "geekcom\\ValidatorDocs\\ValidatorProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "geekcom\\ValidatorDocs\\": "src/validator-docs"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Rodrigues Lima",
+                    "email": "danielrodrigues-ti@hotmail.com"
+                }
+            ],
+            "description": "Biblioteca para validação de Título de Eleitor, CPF, CNPJ, NIS e CNH",
+            "time": "2020-01-16T20:49:27+00:00"
+        },
+        {
+            "name": "igorescobar/jquery-mask-plugin",
+            "version": "v1.14.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kamihouse/jQuery-Mask-Plugin.git",
+                "reference": "678a7df1f0bb275ce53f365b91af99d86850978d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kamihouse/jQuery-Mask-Plugin/zipball/678a7df1f0bb275ce53f365b91af99d86850978d",
+                "reference": "678a7df1f0bb275ce53f365b91af99d86850978d",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Escobar",
+                    "email": "blog@igorescobar.com",
+                    "homepage": "https://about.me/igorescobar",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Thiago Pereira Rosa",
+                    "email": "thiagor@engineer.com",
+                    "homepage": "http://coderi.com.br",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "A jQuery Plugin to make masks on form fields and html elements.",
+            "homepage": "https://github.com/igorescobar/jQuery-Mask-Plugin",
+            "keywords": [
+                "jquery",
+                "mask",
+                "plugin"
+            ],
+            "time": "2016-04-27T16:16:55+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v6.18.6",
             "source": {
@@ -543,6 +636,53 @@
                 "psysh"
             ],
             "time": "2020-04-07T15:01:31+00:00"
+        },
+        {
+            "name": "laravellegends/pt-br-validator",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelLegends/pt-br-validator.git",
+                "reference": "4b5b6adfe7e8206c9d36a365210f023a1cf01167"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelLegends/pt-br-validator/zipball/4b5b6adfe7e8206c9d36a365210f023a1cf01167",
+                "reference": "4b5b6adfe7e8206c9d36a365210f023a1cf01167",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.1.* || 4.0.*",
+                "phpunit/phpunit": "4.8.* || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelLegends\\PtBrValidator\\ValidatorProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelLegends\\PtBrValidator\\": "src/pt-br-validator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wallace de Souza Vizerra",
+                    "email": "wallacemaxters@gmail.com"
+                }
+            ],
+            "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel 5",
+            "time": "2019-10-02T17:07:11+00:00"
         },
         {
             "name": "league/commonmark",

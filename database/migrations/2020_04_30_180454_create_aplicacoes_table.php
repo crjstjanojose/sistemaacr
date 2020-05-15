@@ -18,10 +18,12 @@ class CreateAplicacoesTable extends Migration
             $table->unsignedBigInteger('produto_id');
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('user_criacao');
+            $table->unsignedBigInteger('user_aplicacao');
             $table->unsignedBigInteger('user_alteracao')->nullable();
             $table->integer('documento_fiscal');
-            $table->dateTime('data_venda');
-            $table->dateTime('data_aplicacao');
+            $table->date('data_venda');
+            $table->date('data_aplicacao');
+            $table->text('observacao')->nullable();
 
             $table->foreign('cliente_id', 'fk_cliente_apl')
                 ->references('id')
@@ -44,6 +46,12 @@ class CreateAplicacoesTable extends Migration
                 ->onUpdate('restrict');
 
             $table->foreign('user_alteracao', 'fk_user_alteracao_apl')
+                ->references('id')
+                ->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('user_aplicacao', 'fk_user_aplicacao_apl')
                 ->references('id')
                 ->on('users')
                 ->onDelete('restrict')

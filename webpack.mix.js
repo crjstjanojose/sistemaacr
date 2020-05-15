@@ -29,7 +29,8 @@ mix
         'resources/vendor/bootstrap/js/bootstrap.js',
         'resources/vendor/duallistbox/jquery.bootstrap-duallistbox.min.js',
         'resources/vendor/datepicker/bootstrap-datepicker.min.js',
-        'resources/vendor/inputmask/jquery.inputmask.bundle.min.js',
+        'resources/vendor/inputmask/jquery.mask.js',
+        'resources/vendor/inputmask/custom.js',
         'resources/vendor/select2/js/select2.js',
     ], 'public/js/vendor.js')
 

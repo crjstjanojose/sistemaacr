@@ -61,8 +61,16 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
 
         // FIM ROTAS DOS DATABLES INDEX
 
+
+
+        Route::get('indexclientes',"ClienteController@indexClientes")->name('index.clientes');
+
+        Route::get('indexaplicacoes',"AplicacaoController@indexAplicacoes")->name('index.aplicacoes');
+
+
         // ROTA PARA CARREGAR OS PRODUTOS NA TELA DE ENCOMENDAS
         Route::post('/produtos/getProdutos/','EncomendaController@getProdutosSelect')->name('produtos.getprodutos.select');
+        Route::post('/clientes/getClientes/','ClienteController@getClientesSelect')->name('clientes.getclientes.select');
 
         // ROTAS DE IMPORTACAO DOS PRODUTOS
         Route::post('produtos/importar', 'ProdutoController@importarArquivo')->name('produtos.importar');
@@ -112,6 +120,8 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
         Route::resource('encomendas', 'EncomendaController')->middleware('permission:encomendas-listar-pendentes');
         Route::resource('caracteristicas', 'CaracteristicaController')->middleware('permission:caracteristica-listar');
         Route::resource('materiais','MaterialController')->middleware('permission:materiais-listar');
+        Route::resource('clientes','ClienteController');
+        Route::resource('aplicacoes','AplicacaoController');
 
 
 

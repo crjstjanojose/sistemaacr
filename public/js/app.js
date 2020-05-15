@@ -37406,8 +37406,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\acr\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\acr\resources\views\scss\style.scss */"./resources/views/scss/style.scss");
+__webpack_require__(/*! C:\laragon\www\acr\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\acr\resources\views\scss\style.scss */"./resources/views/scss/style.scss");
 
 
 /***/ })

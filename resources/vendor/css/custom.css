@@ -62,8 +62,8 @@ tbody>tr>td:hover {
     background-color: rgb(199, 231, 233);
 }
 
+/*
 .dropdown-menu {
-
     background-color:  #002346;
 }
 
@@ -72,15 +72,13 @@ tbody>tr>td:hover {
     background-color: #002346;
     color: #fff;
 }
+*/
 
 .dropdown-item:hover {
     color: #fff;
-    background: #0491b4;
+    background: #002346;
 }
-
 div.dataTables_wrapper div.dataTables_info {
     padding-top: 0.2em;
     white-space: nowrap;
 }
-
-
